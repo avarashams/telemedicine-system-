@@ -6,6 +6,7 @@ class Doctor
     function index()
     {
         $this->dashboard();
+        
     }
     
     public function dashboard()
@@ -18,5 +19,16 @@ class Doctor
             redirect('login');
         }
         $this->view('doctor/dashboard');
+    }
+    public function manage_appointments()
+    {
+        require_login();
+        
+        $user = get_user();
+        
+        if ($user->role != 'doctor') {
+            redirect('login');
+        }
+        $this->view('doctor/manage_appointments');
     }
 }

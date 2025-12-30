@@ -11,14 +11,48 @@ body {
 }
 
 .container {
-    max-width: 700px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-width: 900px;
     margin: 0 auto;
-    background-color: white;
+    background-color: #d4d4d4;
     padding: 40px;
-    border-radius: 10px;
+    border-radius: 30px;
+}
+.signup-box {
+    background-color: white;
+    border-radius: 30px;
+    padding: 40px;
+    width: 100%;
+    max-width: 800px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+.button-group {
+    text-align: center;
+    margin-bottom: 30px;
+}
+.button-group h2 {
+    margin-bottom: 20px;
+    font-size: 24px;
+}
+.button-group input {
+    padding: 12px 30px;
+    margin: 0 10px;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    background-color: #0F2854;
+    color: white;
+    transition: background-color 0.3s, color 0.3s;
+}
+.form-container {
+    display: none;
 }
 
-h1 {
+
+.form-container h1 {
     text-align: center;
     font-size: 32px;
     margin-bottom: 30px;
@@ -116,20 +150,38 @@ input:focus {
     align-items: center;
     gap: 6px;
 }
+.sensory-field {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.sensory-options {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+.sensory-label {
+    font-weight: 600;
+}
 
 input[type="radio"] {
     width: 18px;
-    height: 18px;
-    accent-color: #2196F3;
+    margin-bottom: 8px;
+    accent-color: #0F2854;
 }
 
-.phone-row {
-    display: flex;
-    gap: 10px;
+#specialty {
+    width: 100%;
+    padding: 12px 16px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 14px;
+    outline: none;
+    background-color: white;
+    cursor: pointer;
 }
-
-.country-code {
-    width: 100px;
+#blood-group {
+    width: 100%;
     padding: 12px 16px;
     border: 1px solid #ddd;
     border-radius: 8px;
@@ -139,29 +191,33 @@ input[type="radio"] {
     cursor: pointer;
 }
 
+.phone-row {
+    display: flex;
+    gap: 10px;
+}
+
+
+.country-code {
+    padding: 12px 16px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 14px;
+    background-color: #f0f0f0;
+    cursor: pointer;
+}
+
 .phone-input {
     flex: 1;
 }
 
-.info-text {
+.info-text{
     display: flex;
     align-items: center;
-    gap: 6px;
+    justify-content: end;
+    
     font-size: 12px;
     color: #666;
-    margin-top: 8px;
-}
-
-.info-icon {
-    width: 16px;
-    height: 16px;
-    border: 2px solid #666;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 12px;
-    font-weight: bold;
+    margin-bottom: 8px;
 }
 
 .password-requirements {
@@ -190,4 +246,11 @@ input[type="radio"] {
 
 .confirm-button:hover {
     background-color: #1a1a1a;
+}
+.back-btn{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    cursor: pointer;
 }
