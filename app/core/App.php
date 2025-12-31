@@ -16,6 +16,7 @@ class App
     public function loadController()
     {
         $URL = $this->splitURL();
+        var_dump($URL);
         $filename = "../app/controllers/" . ucfirst($URL[0]) . ".php";
         if (file_exists($filename)) {
             require_once $filename;
@@ -28,13 +29,6 @@ class App
         }
 //show($filename);
 
-        
-        if (isset($URL[1])) {
-            if (method_exists($this->controller, $URL[1])) {
-                $this->method = $URL[1];
-                unset($URL[1]);
-            }
-        }
 //        show($URL);
         $controller = new $this->controller;
         

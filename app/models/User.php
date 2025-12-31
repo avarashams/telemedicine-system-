@@ -8,32 +8,23 @@ class User
     protected $allowedColumns = [
         'email',
         'password',
-        'role'
+        'role',
+        'remember_token'
     ]; // specify which columns are allowed to be inserted or updated
-
-    public function validate($data)
-    {
-        $this->errors = [];
-
-        //email
-        if (empty($data['email'])) {
-            $this->errors['email'] = "Email is required";
-        } else if (!filter_var($data['email'], FILTER_VALIDATE_EMAIL)) {
-            $this->errors['email'] = "Email is not valid";
-        }
-        // password
-        if (empty($data['password'])) {
-            $this->errors['password'] = "Password is required";
-        }
-        if (empty($this->errors)) {
-            return true;
-        }
-        return false;
-    }
+    
 
     public function find_by_email($email)
     {
         return $this->first(['email' => $email]);
+    }
+    
+    public function save_remember_token($userId, $token)
+    {
+        return $this->update($userId, ['remember_token' => $token]);
+    }
+    public function delete_remember_token($userId)
+    {
+        return $this->update($userId, ['remember_token' => null]);
     }
 
     public function authenticate($email, $password)
@@ -57,4 +48,5 @@ class User
         }
         return false;
     }
+    
 }

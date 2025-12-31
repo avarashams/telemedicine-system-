@@ -9,6 +9,11 @@ trait Controller
         }
         
         $filename = "../app/views/" . $name . ".view.php";
+//        var_dump($filename);
+//        var_dump($_SESSION);
+        
+
+        var_dump($_COOKIE);
         var_dump($filename);
         if (file_exists($filename)) {
             require_once $filename;

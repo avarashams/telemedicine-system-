@@ -78,6 +78,33 @@ header {
     margin-bottom: 20px;
 }
 
+.form-row {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+.form-row div {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+}
+.form-row label {
+    white-space: nowrap;
+    margin-top: 12px;
+    gap: 6px;
+}
+.form-row input[type="checkbox"] {
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+    margin-top: 12px;
+}
+.form-row input[type="checkbox"]:checked {
+    accent-color: #0F2854;
+}
+
 label {
     display: block;
     margin-bottom: 8px;

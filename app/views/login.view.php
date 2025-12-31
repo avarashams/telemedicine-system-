@@ -22,10 +22,10 @@
             </div>
 
             <form action="" method="POST">
-                <?php if(!empty($errors)) { ?>
-                <div class="errors">
-                    <?php echo implode("<br>", $errors); ?>
-                </div>
+                <?php if (!empty($errors)) { ?>
+                    <div class="errors">
+                        <?php echo implode("<br>", $errors); ?>
+                    </div>
                 <?php } ?>
                 <div class="form-group">
                     <label for="email">Email</label>
@@ -38,6 +38,14 @@
                 </div>
 
                 <input type="submit" value="Log In" class="login-button">
+                <div class="form-row">
+                    <div>
+                        <label for="remember-me">
+                            Remember Me
+                        </label>
+                        <input type="checkbox" name="remember-me" id="remember-me">
+                    </div>
+                </div>
 
                 <div class="register-link">
                     <a href="<?php echo ROOT ?>/Signup">Not yet Registered?</a>
