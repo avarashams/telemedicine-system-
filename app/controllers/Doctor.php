@@ -6,7 +6,6 @@ class Doctor
     function index()
     {
         $this->dashboard();
-        
     }
     
     public function dashboard()

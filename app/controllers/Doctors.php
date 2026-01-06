@@ -9,11 +9,11 @@ class Doctors
         
         $specialties = $doctor->distinct('d_specialty');
         $genders = $doctor->distinct('d_gender');
-        $page = isset($_GET['page']) ? $_GET['page'] : 0;
-        $page = max($page, 1);
+        $page = $_GET['page'] ?? 1;
+        $offset = (abs($page) - 1) * 3;
 //        show($page);
-        $all_doctors = $doctor->get_paginated(3, $page);
-        
+        $all_doctors = $doctor->get_paginated(3, abs($offset));
+            
         
 //        show($all_doctors);
         $this->view('doctors', [

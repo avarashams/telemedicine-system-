@@ -36,17 +36,5 @@ class User
             }
         }
         return false;
-    }
-
-    public function hasRole($userId, $role)
-    {
-        $user = $this->first(['id' => $userId]);
-        if ($user) {
-            if ($user->role == $role) {
-                return true;
-            }
-        }
-        return false;
-    }
-    
+    }    
 }
