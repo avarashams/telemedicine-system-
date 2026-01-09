@@ -74,9 +74,6 @@ function clear_remember_me()
 
 function check_remember_me()
 {
-//    if(is_logged_in()){
-//        return false;
-//    }
     $cookie = get_remember_me();
 //    var_dump($cookie);
     if ($cookie) {
@@ -84,7 +81,8 @@ function check_remember_me()
         $row = $user->first(['remember_token' => $cookie['token']]);
 //        var_dump($row);
         if ($row) {
-            login_user($row);
+//            login_user($row);
+            
             return true;
         } else {
             clear_remember_me();
