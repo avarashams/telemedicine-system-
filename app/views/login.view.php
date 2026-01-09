@@ -29,12 +29,12 @@
                 <?php } ?>
                 <div class="form-group">
                     <label for="email">Email</label>
-                    <input type="email" id="email" name="email">
+                    <input type="email" id="email" name="email" value="<?php if (isset($_COOKIE["remember-email"])){echo $_COOKIE['remember-email'];} ?>">
                 </div>
 
                 <div class="form-group">
                     <label for="password">Password</label>
-                    <input type="password" name="password" id="password">
+                    <input type="password" name="password" id="password" value="<?php if (isset($_COOKIE["remember-password"])){echo $_COOKIE['remember-password'];} ?>">
                 </div>
 
                 <input type="submit" value="Log In" class="login-button">
