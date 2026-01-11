@@ -14,7 +14,7 @@ class Doctors
 //        show($page);
         $all_doctors = $doctor->get_paginated(3, abs($offset));
             
-        
+//        print_r($all_doctors);
 //        show($all_doctors);
         $this->view('doctors', [
             'all_doctors' => $all_doctors,

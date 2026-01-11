@@ -21,8 +21,8 @@
                             <?php if (!empty($specialties)): ?>
                                 <?php foreach ($specialties as $specialty): ?>
                                     <input type="checkbox" class="form-check-input doctor_check"
-                                           value="<?php echo htmlspecialchars($specialty->d_specialty); ?>"
-                                           id="specialty"><?php echo htmlspecialchars($specialty->d_specialty); ?> <br>
+                                           value="<?php echo htmlspecialchars($specialty['d_specialty']); ?>"
+                                           id="specialty"><?php echo htmlspecialchars($specialty['d_specialty']); ?> <br>
                                 <?php endforeach; ?>
                             <?php else: ?>
                                 No specialties found.
@@ -40,8 +40,8 @@
                             <?php if (!empty($genders)): ?>
                                 <?php foreach ($genders as $gender): ?>
                                     <input type="checkbox" class="form-check-input doctor_check"
-                                           value="<?php echo htmlspecialchars($gender->d_gender); ?>"
-                                           id="gender"><?php echo htmlspecialchars($gender->d_gender); ?>
+                                           value="<?php echo htmlspecialchars($gender['d_gender']); ?>"
+                                           id="gender"><?php echo htmlspecialchars($gender['d_gender']); ?>
                                     <br>
                                 <?php endforeach; ?>
                             <?php else: ?>
@@ -53,8 +53,8 @@
             </ul>
         </div>
         <div class="main-content">
-<!--            <h5 class="text-center" id="textChange">All Doctors</h5>-->
-            
+            <!--            <h5 class="text-center" id="textChange">All Doctors</h5>-->
+
             <hr>
             <div class="text-center">
                 <p style="display: none;" id="loader">Loading...</p>
@@ -69,10 +69,10 @@
                 <div class="card-item mb-2">
                     <div class="card-deck">
                         <div class="card border-secondary">
-                            <?php if ($doctor->d_avail_status == 'Offline') { ?>
-                                <p class="card-top offline"><?php echo htmlspecialchars($doctor->d_avail_status); ?></p>
+                            <?php if ($doctor['d_avail_status'] == 'Offline') { ?>
+                                <p class="card-top offline"><?php echo htmlspecialchars($doctor['d_avail_status']); ?></p>
                             <?php } else { ?>
-                                <p class="card-top online"><?php echo htmlspecialchars($doctor->d_avail_status); ?></p>
+                                <p class="card-top online"><?php echo htmlspecialchars($doctor['d_avail_status']); ?></p>
                             <?php } ?>
                             <div class="card-img-overlay">
                             </div>
@@ -80,13 +80,13 @@
 
                                 <h4 class="card-title">
 
-                                    <?php echo htmlspecialchars($doctor->d_first_name . " " . $doctor->d_last_name); ?>
+                                    <?php echo htmlspecialchars($doctor['d_first_name'] . " " . $doctor['d_last_name']); ?>
 
                                 </h4>
-                                <p><?php echo htmlspecialchars($doctor->d_title); ?></p>
+                                <p><?php echo htmlspecialchars($doctor['d_title']); ?></p>
                                 <br>
                                 <p>
-                                    <?php if ($doctor->d_gender == "Female") { ?>
+                                    <?php if ($doctor['d_gender'] == "Female") { ?>
                                 <div class="icon-text">
                                     <img src="<?php echo ROOT ?>/assets/images/logos/gender-female.svg">
                                     <p>Female</p>
@@ -102,27 +102,27 @@
 
                                 <div class="icon-text">
                                     <img src="<?php echo ROOT ?>/assets/images/logos/cash-stack.svg" alt="cash icon">
-                                    <p><?php echo htmlspecialchars("Consultation Fee: $" . $doctor->d_fee); ?></p>
+                                    <p><?php echo htmlspecialchars("Consultation Fee: $" . $doctor['d_fee']); ?></p>
 
                                 </div>
                                 <div class="icon-text">
                                     <img src="<?php echo ROOT ?>/assets/images/logos/journal-plus.svg"
                                          alt="journal icon">
-                                    <p><?php echo htmlspecialchars("Specialty: " . $doctor->d_specialty); ?></p>
+                                    <p><?php echo htmlspecialchars("Specialty: " . $doctor['d_specialty']); ?></p>
                                 </div>
                                 <div class="icon-text">
                                     <!--                                    availabilty-->
                                     <img src="<?php echo ROOT ?>/assets/images/logos/clock-fill.svg" alt="clock icon">
-                                    <p><?php echo htmlspecialchars("Available from " . $doctor->d_avail_from . " to " . $doctor->d_avail_to); ?></p>
+                                    <p><?php echo htmlspecialchars("Available from " . $doctor['d_avail_from'] . " to " . $doctor['d_avail_to']); ?></p>
                                 </div>
                                 <div class="icon-text">
                                     <img src="<?php echo ROOT ?>/assets/images/logos/envelope-at-fill.svg"
                                          alt="email icon">
-                                    <?php echo htmlspecialchars("Email address: " . $doctor->d_email); ?>
+                                    <?php echo htmlspecialchars("Email address: " . $doctor['d_email']); ?>
                                 </div>
 
 
-                                <a href="<?php echo ROOT ?>/appointments/create/<?php echo htmlspecialchars($doctor->id); ?>"
+                                <a href="<?php echo ROOT ?>/appointments/create/<?php echo htmlspecialchars($doctor['id']); ?>"
                                    class="btn btn-primary">Book Appointment</a>
 
                             </div>
@@ -134,7 +134,7 @@
                         <?php if (!isset($_GET['page'])) {
                             $_GET['page'] = 1;
                         } ?>
-                        <?php if ($_GET['page'] > 1){ ?>
+                        <?php if ($_GET['page'] > 1) { ?>
                             <a href="<?= ROOT ?>/doctors?page=<?= $_GET['page'] - 1 ?>" class="btn btn-secondary">
                                 Previous
                             </a>
@@ -149,8 +149,8 @@
                     </div>
                     <?php } else { ?>
                         No Doctors Found
-                        <div class="pagination" >
-                            <?php if ($_GET['page'] > 1){ ?>
+                        <div class="pagination">
+                            <?php if ($_GET['page'] > 1) { ?>
                                 <a href="<?= ROOT ?>/doctors?page=<?= $_GET['page'] - 1 ?>" class="btn btn-secondary">
                                     Previous
                                 </a>

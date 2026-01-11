@@ -37,15 +37,15 @@
                     </tr>
                     <?php foreach ($data['patients'] as $patient): ?>
                         <tr>
-                            <td><?php echo htmlspecialchars($patient->p_nid_no); ?></td>
-                            <td><?php echo htmlspecialchars($patient->p_first_name . " " . $patient->p_last_name); ?></td>
-                            <td><?php echo htmlspecialchars($patient->p_birth_date); ?></td>
-                            <td><?php echo htmlspecialchars($patient->p_gender); ?></td>
-                            <td><?php echo htmlspecialchars($patient->is_sensory_disabled ? 'Yes' : 'No'); ?></td>
-                            <td><?php echo htmlspecialchars($patient->p_email); ?></td>
-                            <td><?php echo htmlspecialchars($patient->p_phone_no); ?></td>
-                            <td><?php echo htmlspecialchars($patient->p_address); ?></td>
-                            <td><?php echo htmlspecialchars($patient->p_blood_group); ?></td>
+                            <td><?php echo htmlspecialchars($patient['p_nid_no']); ?></td>
+                            <td><?php echo htmlspecialchars($patient['p_first_name'] . " " . $patient['p_last_name']); ?></td>
+                            <td><?php echo htmlspecialchars($patient['p_birth_date']); ?></td>
+                            <td><?php echo htmlspecialchars($patient['p_gender']); ?></td>
+                            <td><?php echo htmlspecialchars($patient['is_sensory_disabled'] ? 'Yes' : 'No'); ?></td>
+                            <td><?php echo htmlspecialchars($patient['p_email']); ?></td>
+                            <td><?php echo htmlspecialchars($patient['p_phone_no']); ?></td>
+                            <td><?php echo htmlspecialchars($patient['p_address']); ?></td>
+                            <td><?php echo htmlspecialchars($patient['p_blood_group']); ?></td>
                             <td>
                                 <!--                    <button class="btn btn-add">Add</button>-->
                                 <button class="btn btn-update">Update</button>

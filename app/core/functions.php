@@ -141,9 +141,9 @@ function require_role($role, $redirect = '/login')
 function login_user($user)
 {
     init_session();
-    $_SESSION['id'] = $user->id;
-    $_SESSION['email'] = $user->email;
-    $_SESSION['role'] = $user->role;
+    $_SESSION['id'] = $user['id'];
+    $_SESSION['email'] = $user['email'];
+    $_SESSION['role'] = $user['role'];
     redirect_by_role($_SESSION['role']);
     session_regenerate_id(true); // Prevent session fixation attacks
 }

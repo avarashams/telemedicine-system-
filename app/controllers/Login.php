@@ -15,12 +15,14 @@ class Login
             $arr['email'] = $_POST['email'];
             $arr['password'] = $_POST['password'];
             $row = $user->first($arr);
-
+            show($row);
             if ($row) {
-                if ($row->password === $_POST['password']) {
+                if ($row['password'] === $_POST['password']) {
                     init_session();
-                    $_SESSION['email'] = $_POST['email'];
-                    $_SESSION['password'] = $_POST['password'];
+                    $_SESSION['email'] = $row['email'];
+                    $_SESSION['password'] = $row['password'];
+                    $_SESSION['role'] = $row['role'];
+                    $_SESSION['id'] = $row['id'];
                     if (isset($_POST['remember-me'])) {
 //                        $token = generate_token();
 //                        $user->save_remember_token($row->id, $token);
@@ -31,7 +33,7 @@ class Login
                         setcookie('remember-email', '', time() - 3600, "/");
                         setcookie('remember-password', '', time() - 3600, "/");
                     }
-//                    var_dump($_SESSION);
+                    var_dump($_SESSION);
                     login_user($row);
 //                    redirect_by_role($row->role);
                     // after redirects it dies here, so no code will work after this

@@ -38,16 +38,16 @@
                     </tr>
                     <?php foreach ($data['doctors'] as $doctor): ?>
                         <tr>
-                            <td><?php echo htmlspecialchars($doctor->d_reg_no); ?></td>
-                            <td><?php echo htmlspecialchars($doctor->d_first_name . " " . $doctor->d_last_name); ?></td>
-                            <td><?php echo htmlspecialchars($doctor->d_title); ?></td>
-                            <td><?php echo htmlspecialchars($doctor->d_birth_date); ?></td>
-                            <td><?php echo htmlspecialchars($doctor->d_gender); ?></td>
-                            <td><?php echo htmlspecialchars($doctor->d_email); ?></td>
-                            <td><?php echo htmlspecialchars($doctor->d_specialty); ?></td>
-                            <td><?php echo htmlspecialchars($doctor->d_phone_no); ?></td>
-                            <td><?php echo htmlspecialchars($doctor->d_avail_from . " to " . $doctor->d_avail_to . " (" . $doctor->d_avail_status . ")"); ?></td>
-                            <td><?php echo htmlspecialchars($doctor->d_fee); ?></td>
+                            <td><?php echo htmlspecialchars($doctor['d_reg_no']); ?></td>
+                            <td><?php echo htmlspecialchars($doctor['d_first_name'] . " " . $doctor['d_last_name']); ?></td>
+                            <td><?php echo htmlspecialchars($doctor['d_title']); ?></td>
+                            <td><?php echo htmlspecialchars($doctor['d_birth_date']); ?></td>
+                            <td><?php echo htmlspecialchars($doctor['d_gender']); ?></td>
+                            <td><?php echo htmlspecialchars($doctor['d_email']); ?></td>
+                            <td><?php echo htmlspecialchars($doctor['d_specialty']); ?></td>
+                            <td><?php echo htmlspecialchars($doctor['d_phone_no']); ?></td>
+                            <td><?php echo htmlspecialchars($doctor['d_avail_from'] . " to " . $doctor['d_avail_to'] . " (" . $doctor['d_avail_status'] . ")"); ?></td>
+                            <td><?php echo htmlspecialchars($doctor['d_fee']); ?></td>
                             <td>
                                 <!--                    <button class="btn btn-add">Add</button>-->
                                 <button class="btn btn-update">Update</button>
