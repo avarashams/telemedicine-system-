@@ -95,7 +95,6 @@ function is_logged_in()
 {
     init_session();
     return isset($_SESSION['id']);
-    
 }
 
 function get_user()
@@ -122,7 +121,6 @@ function has_role()
 
 function require_login()
 {
-
     if (!is_logged_in()) {
         redirect('/login');
     }

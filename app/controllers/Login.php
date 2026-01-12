@@ -33,7 +33,7 @@ class Login
                         setcookie('remember-email', '', time() - 3600, "/");
                         setcookie('remember-password', '', time() - 3600, "/");
                     }
-                    var_dump($_SESSION);
+//                    var_dump($_SESSION);
                     login_user($row);
 //                    redirect_by_role($row->role);
                     // after redirects it dies here, so no code will work after this

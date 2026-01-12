@@ -7,6 +7,7 @@ class _404
     public function index()
     {
         var_dump($_SESSION);
+        var_dump($_REQUEST);
         $this->view('404');
     }
 }

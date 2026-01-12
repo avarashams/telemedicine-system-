@@ -122,7 +122,7 @@
                                 </div>
 
 
-                                <a href="<?php echo ROOT ?>/appointments/create/<?php echo htmlspecialchars($doctor['id']); ?>"
+                                <a href="<?php echo ROOT ?>/doctors/<?php echo htmlspecialchars($doctor['id']); ?>"
                                    class="btn btn-primary">Book Appointment</a>
 
                             </div>

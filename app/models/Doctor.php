@@ -21,6 +21,5 @@ class Doctor
         'd_avail_status',
         'd_fee'
     ]; // specify which columns are allowed to be inserted or updated
-
     
 }
