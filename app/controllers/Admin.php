@@ -42,29 +42,31 @@ class Admin
             redirect('login');
         }
         $doctor = new Doctor;
-    
-        
+
+
         if ($_SERVER['REQUEST_METHOD'] == 'GET') {
             // Process deletion of a doctor
             if (isset($_GET['d_reg_no'])) {
                 $d_reg_no = $_GET['d_reg_no'];
                 var_dump($d_reg_no);
                 $doctor->delete($d_reg_no, 'd_reg_no');
-                }
+            }
             // Redirect to avoid resubmission
 //                redirect('admin/manage_doctors');
         }
-    
+
         $doctors = $doctor->find_all();
         $data = [
             'user' => $user,
             'doctors' => $doctors,
             'title' => 'Manage Doctors - Telemedicine++',
         ];
-    
+
         $this->view('admin/manage_doctors', $data);
     }
-    public function add_doctor(){
+
+    public function add_doctor()
+    {
         $errors = [];
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             header('Content-Type: application/json');
@@ -87,7 +89,7 @@ class Admin
                 'd_rating' => $_POST['d_rating'],
             ];
             $errors = validate_core($newData);
-            if(!empty($errors)){
+            if (!empty($errors)) {
                 echo json_encode([
                     'status' => 'error',
                     'errors' => $errors
@@ -105,8 +107,10 @@ class Admin
         }
         $this->view('admin/add_doctor', ['errors' => $errors]);
     }
-    public function update_doctor(){
-        $errors = [];
+
+    public function update_doctor()
+    {
+//        print_r($_GET);
         $d_reg_no = $_GET['d_reg_no'];
         $doctor = new Doctor();
         $doctor_data = $doctor->first(['d_reg_no' => $d_reg_no]);
@@ -127,6 +131,7 @@ class Admin
             'd_fee' => $doctor_data['d_fee'],
             'd_rating' => $doctor_data['d_rating']
         ];
+        $errors = [];
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             header('Content-Type: application/json');
             $updatedData = [
@@ -152,18 +157,17 @@ class Admin
                     'status' => 'error',
                     'errors' => $errors
                 ]);
+//                var_dump($errors);
                 exit;
             }
-
             echo json_encode([
                 'status' => 'success',
                 'message' => 'Form submitted successfully'
             ]);
-            
             $doctor->update($d_reg_no, $updatedData, 'd_reg_no');
             exit;
         }
-        $this->view('admin/update_doctor', $data);
+        $this->view('admin/update_doctor', ['data' => $data, 'errors' => $errors]);
     }
 
     public

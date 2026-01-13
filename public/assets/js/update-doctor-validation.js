@@ -3,7 +3,7 @@ document.getElementById("d_Form").addEventListener("submit", function (e) {
 
     const formData = new FormData(this);
     // console.log(ROOT);
-    fetch(ROOT + "/admin/update_doctor", {
+    fetch(ROOT + "/admin/update_doctor?d_reg_no=" + d_reg_no_existing, {
         method: "POST",
         body: formData
     })
@@ -15,7 +15,7 @@ document.getElementById("d_Form").addEventListener("submit", function (e) {
             });
 
             if (data.status === 'error') {
-                console.log(data.errors);
+                // console.log(data.errors);
                 for (let key in data.errors) {
                     document.getElementById(key + '_error').innerText = data.errors[key] || '';
                 }
@@ -24,7 +24,6 @@ document.getElementById("d_Form").addEventListener("submit", function (e) {
                 // console.log(ROOT + "/admin/manage_doctors");
                 window.location.href = ROOT + "/admin/manage_doctors";
             }
-
         })
         .catch(error => console.error('Error:', error));
 });
