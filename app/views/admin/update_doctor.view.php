@@ -1,5 +1,4 @@
 <?php
-show($data);
 ?>
 <!doctype html>
 <html>
@@ -29,7 +28,7 @@ show($data);
                 <form method="POST" action="<?php echo ROOT ?>/admin/update_doctor" id="d_Form">
                     <div class="form-group">
                         <label for="d_reg_no">Registration number (BMDC)
-                            <input type="text" name="d_reg_no" placeholder="16 digit number" value="<?php echo $data['d_reg_no'] ?? '';?>" disabled>
+                            <input style="background: #D5D5D5;" type="text" name="d_reg_no" placeholder="16 digit number" value="<?php echo $data['d_reg_no'] ?? '';?>" readonly>
                         </label>
                         <span class="errors" id="d_reg_no_error"></span>
                     </div>
@@ -185,15 +184,14 @@ show($data);
                     </a>
                 </form>
             </div>
-
         </div>
     </div>
 </div>
 <script>
     var ROOT = "<?= ROOT ?>";
+    var d_reg_no_existing = "<?php echo $_GET['d_reg_no'] ?? '';?>";
 </script>
 <script src="<?php echo ROOT ?>/assets/js/update-doctor-validation.js"></script>
-
 </body>
 </html>
 
