@@ -43,7 +43,8 @@
                             <td><?php echo htmlspecialchars($announcement['text']); ?></td>
                             <td><?php echo htmlspecialchars($announcement['created_at']); ?></td>
                             <td>
-                                <form method="post" action="<?php echo ROOT ?>/adminPortal/announcements/delete/<?php echo $announcement['id']; ?>" onsubmit="return confirm('Are you sure you want to delete this announcement?');">
+                                <form method="GET" action="<?php echo ROOT ?>/adminPortal/delete_announcement" onsubmit="return confirm('Are you sure you want to delete this announcement?');">
+                                    <input type="hidden" name="id" value="<?php echo htmlspecialchars($announcement['id']); ?>">
                                     <button type="submit" class="btn btn-delete">Delete</button>
                                 </form>
                             </td>
