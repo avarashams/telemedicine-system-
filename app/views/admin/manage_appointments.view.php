@@ -9,13 +9,14 @@
     <div class="two-columns">
         <div class="menu">
             <div class="top">
-                <a href="<?php echo ROOT ?>/admin" class="menu-btn">Dashboard</a>
-                <a href="<?php echo ROOT ?>/admin/manage_doctors" class="menu-btn ">Manage Doctors</a>
-                <a href="<?php echo ROOT ?>/admin/manage_patients" class="menu-btn">Manage Patients</a>
-                <a href="<?php echo ROOT ?>/admin/manage_appointments" class="menu-btn active">Manage Appointments</a>
-                <a href="#" class="menu-btn">Announcements</a>
+                <a href="<?php echo ROOT ?>/adminPortal" class="menu-btn">Dashboard</a>
+                <a href="<?php echo ROOT ?>/adminPortal/manage_doctors" class="menu-btn ">Manage Doctors</a>
+                <a href="<?php echo ROOT ?>/adminPortal/manage_patients" class="menu-btn">Manage Patients</a>
+                <a href="<?php echo ROOT ?>/adminPortal/manage_appointments" class="menu-btn active">Manage Appointments</a>
+                <a href="<?php echo ROOT?>/adminPortal/announcements" class="menu-btn">Announcements</a>
             </div>
             <div class="bottom">
+                <a href="<?php echo ROOT ?>/" class="menu-btn">Website</a>
                 <a href="#" class="menu-btn">Profile</a>
                 <a href="<?php echo ROOT?>/logout" class="menu-btn">Log Out</a>
             </div>

@@ -34,6 +34,8 @@ class Doctors
                     redirect_by_role('patient');
                 } elseif ($_SESSION['role'] === 'admin') {
                     redirect_by_role('admin');
+                } else {
+                    redirect('login');
                 }
             }
         }

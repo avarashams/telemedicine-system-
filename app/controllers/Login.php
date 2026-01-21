@@ -23,6 +23,8 @@ class Login
                     $_SESSION['password'] = $row['password'];
                     $_SESSION['role'] = $row['role'];
                     $_SESSION['id'] = $row['id'];
+                    $_SESSION['d_reg_no'] = $row['d_reg_no'] ?? null;
+                    $_SESSION['p_nid_no'] = $row['p_nid_no'] ?? null;
                     if (isset($_POST['remember-me'])) {
 //                        $token = generate_token();
 //                        $user->save_remember_token($row->id, $token);

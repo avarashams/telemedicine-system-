@@ -14,7 +14,7 @@
     <nav>
         <ul class="auth">
             <?php if (isset($_SESSION['id'])){ ?>
-            <li><a href="<?php echo ROOT . "/" . $_SESSION['role'] . "/dashboard"?>">Welcome <?php echo $_SESSION['email']?></a></li>
+            <li><a href="<?php echo ROOT . "/" . $_SESSION['role'] . "Portal" . "/dashboard"?>">Welcome <?php echo $_SESSION['email']?></a></li>
             <li><a href="<?php echo ROOT ?>/logout">Logout</a></li>
             <?php } else {?>
             <li><a href="<?php echo ROOT ?>/login">Login</a></li>

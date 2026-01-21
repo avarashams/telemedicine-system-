@@ -33,7 +33,7 @@ function is_nav_active($path)
     return strpos($current, $path) === 0 ? 'active' : '';
 }
 
-function validate_core($data)
+function validate_core_doctor($data)
 {
     $errors = [];
     // validate d_reg_no
@@ -71,9 +71,9 @@ function validate_core($data)
     $d_title = trim($data['d_title'] ?? '');
     if (empty($d_title)) {
         $errors['d_title'] = "Title is required.";
-    } elseif (!preg_match('/^[a-zA-Z]+$/', $d_title)) {
-        $errors['d_title'] = "Title can only contain letters.";
-    }    
+    } elseif (!preg_match('/^[a-zA-Z]+\.?$/', $d_title)) {
+        $errors['d_title'] = "Title can only contain letters and an optional dot.";
+    }
     //birthdate validation
     $d_birth_date = trim($data['d_birth_date'] ?? '');
     if (empty($d_birth_date)) {
@@ -184,7 +184,10 @@ function validate_core($data)
 //         show($_POST);
 //        print_r();
     return $errors;
-
+}
+function validate_core_patient($data)
+{
+    // write here similar to validate_core_doctor but for patient values
 }
 
 function generate_token($length = 64)
@@ -260,7 +263,9 @@ function get_user()
         return (object)[
             'id' => $_SESSION['id'],
             'email' => $_SESSION['email'],
-            'role' => $_SESSION['role']
+            'role' => $_SESSION['role'],
+            'd_reg_no' => $_SESSION['d_reg_no' ] ?? null,
+            'p_nid_no' => $_SESSION['p_nid_no' ] ?? null
         ];
     }
     return null;
@@ -315,13 +320,13 @@ function redirect_by_role($role)
 {
     switch ($role) {
         case 'admin':
-            redirect('admin/dashboard');
+            redirect('adminPortal/dashboard');
             break;
         case 'doctor':
-            redirect('doctor/dashboard');
+            redirect('doctorPortal/dashboard');
             break;
         case 'patient':
-            redirect('patient/dashboard');
+            redirect('patientPortal/dashboard');
             break;
         default:
             redirect('home');

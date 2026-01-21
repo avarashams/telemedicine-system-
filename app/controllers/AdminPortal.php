@@ -1,6 +1,6 @@
 <?php
 
-class Admin
+class AdminPortal
 {
     use Controller;
 
@@ -76,7 +76,7 @@ class Admin
                 'd_fee' => $_POST['d_fee'],
                 'd_rating' => $_POST['d_rating'],
             ];
-            $errors = validate_core($newData);
+            $errors = validate_core_doctor($newData);
             if (!empty($errors)) {
                 echo json_encode([
                     'status' => 'error',
@@ -147,7 +147,7 @@ class Admin
                 'd_fee' => $_POST['d_fee'],
                 'd_rating' => $_POST['d_rating']
             ];
-            $errors = validate_core($updatedData);
+            $errors = validate_core_doctor($updatedData);
             if (!empty($errors)) {
                 echo json_encode([
                     'status' => 'error',
@@ -208,7 +208,29 @@ class Admin
                 $doctor->delete($d_reg_no, 'd_reg_no');
             }
             // Redirect to avoid resubmission
-//                redirect('admin/manage_doctors');
+                redirect('admin/manage_doctors');
         }
+    }
+    public function announcements()
+    {
+        $announcement = new Announcement;
+        $announcements = $announcement->find_all();
+        
+        $this->view('admin/announcements', $data = [
+            'announcements' => $announcements,
+        ]);
+    }
+    public function add_announcement()
+    {
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            $announcement = new Announcement();
+            $data = [
+                'text' => $_POST['text'],
+                'created_at' => date('Y-m-d H:i:s')
+            ];
+            $announcement->insert($data);
+//            redirect('adminPortal/announcements');
+        }
+        $this->view('admin/add_announcement');
     }
 }
