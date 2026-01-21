@@ -30,6 +30,7 @@
                         <th>Gender</th>
                         <th>Date</th>
                         <th>Time</th>
+                        <th>Action</th>
                     </tr>
                     <?php foreach ($data['patient_data'] as $pData): ?>
                         <tr>
@@ -38,6 +39,12 @@
                             <td><?php echo htmlspecialchars($pData['p_gender']); ?></td>
                             <td><?php echo htmlspecialchars($pData['appointment_date']); ?></td>
                             <td><?php echo htmlspecialchars($pData['appointment_time']); ?></td>
+                            <td>
+                                <form action="<?php echo ROOT?>/doctorPortal/generate_report" method="GET" id="reportGenForm">
+                                    <input type="hidden" name="p_nid_no" value="<?php echo htmlspecialchars($pData['p_nid_no']); ?>">
+                                    <button type="submit" class="btn btn-update">Generate Report</button>
+                                </form>
+                            </td>
                         </tr>
                     <?php endforeach; ?>
                 </table>

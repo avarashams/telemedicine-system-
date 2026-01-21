@@ -225,12 +225,21 @@ class AdminPortal
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $announcement = new Announcement();
             $data = [
-                'text' => $_POST['text'],
+                'text' => $_POST['announcement_text'],
                 'created_at' => date('Y-m-d H:i:s')
             ];
             $announcement->insert($data);
-//            redirect('adminPortal/announcements');
+            redirect('adminPortal/announcements');
         }
-        $this->view('admin/add_announcement');
+        $this->view('admin/announcements');
+    }
+    public function delete_announcement()
+    {
+        $id = $_GET['id'];
+        if ($_SERVER['REQUEST_METHOD'] == 'GET') {
+            $announcement = new Announcement();
+            $announcement->delete($id);
+            redirect('adminPortal/announcements');
+        }
     }
 }

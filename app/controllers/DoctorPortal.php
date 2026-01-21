@@ -3,19 +3,20 @@
 class DoctorPortal
 {
     use Controller;
+
     function index()
     {
         $this->dashboard();
     }
-    
+
     public function dashboard()
     {
         require_login();
-        
+
         $user = get_user();
-        
+
         if ($user->role != 'doctor') {
-            redirect('login');  
+            redirect('login');
         }
         $doctor = new Doctor();
         $doctor_data = $doctor->first(['d_email' => $user->email]);
@@ -35,6 +36,7 @@ class DoctorPortal
 //        show($data);
         $this->view('doctor/dashboard', $data);
     }
+
     public function manage_appointments()
     {
         require_login();
@@ -46,7 +48,7 @@ class DoctorPortal
         $doctor = new Doctor();
         $doctor_data = $doctor->first(['d_email' => $user->email]);
 //        var_dump($doctor_data);
-        
+
         $appointment = new Appointment;
         $appointments = $appointment->where(['d_id' => $doctor_data['id']]);
 //        show($appointments);
@@ -57,9 +59,10 @@ class DoctorPortal
             '$appointment_data' => $appointments,
             'patient_data' => $patients_with_appointments
         ];
-        
+
         $this->view('doctor/manage_appointments', $data);
     }
+
     public function profile()
     {
         require_login();
@@ -69,7 +72,7 @@ class DoctorPortal
             redirect('login');
         }
         $doctor = new Doctor();
-        $doctor_data = $doctor->first(['d_email'=> $_SESSION['email']]);
+        $doctor_data = $doctor->first(['d_email' => $_SESSION['email']]);
 //        show($_SESSION);
 //        show($doctor_data);
         $data = [
@@ -122,23 +125,24 @@ class DoctorPortal
                 'status' => 'success',
                 'message' => 'Form submitted successfully'
             ]);
-            $doctor->update(['d_reg_no'=> $doctor_data['d_reg_no']], $updatedData, 'd_reg_no');
+            $doctor->update(['d_reg_no' => $doctor_data['d_reg_no']], $updatedData, 'd_reg_no');
             exit;
         }
-        $this->view('doctor/profile', $data=[
+        $this->view('doctor/profile', $data = [
             'data' => $doctor_data
         ]);
     }
+
     public function set_status()
     {
-        require_login();        
+        require_login();
         $user = get_user();
         if ($user->role != 'doctor') {
             redirect('login');
         }
         $doctor = new Doctor();
         $doctor_data = $doctor->first(['d_email' => $user->email]);
-        
+
         $data = [
             'd_avail_status' => $doctor_data['d_avail_status'],
             'd_avail_from' => $doctor_data['d_avail_from'],
@@ -163,10 +167,68 @@ class DoctorPortal
             }
 //            show($data);
         }
-        
+
         $this->view('doctor/set_status', $data = [
             'data' => $data,
             'errors' => $errors
         ]);
+    }
+
+    public function generate_report()
+    {
+        require_login();
+        $user = get_user();
+        if ($user->role != 'doctor') {
+            redirect('login');
+        }
+        //        show($_GET);
+        if (!isset($_GET['p_nid_no'])) {
+            redirect('doctorPortal/manage_appointments');
+        }
+        $patient_nid = $_GET['p_nid_no'];
+        $patient = new Patient();
+        $patient_data = $patient->first(['p_nid_no' => $patient_nid]);
+//        show($patient_data);
+        $age = date_diff(date_create($patient_data['p_birth_date']), date_create('today'))->y; // y mean years
+        $disability = $patient_data['is_sensory_disabled'] ? 'Yes' : 'No';
+        $data = [
+            'p_nid_no' => $patient_data['p_nid_no'],
+            'p_first_name' => $patient_data['p_first_name'],
+            'p_last_name' => $patient_data['p_last_name'],
+            'age' => $age,
+            'p_gender' => $patient_data['p_gender'],
+            'is_sensory_disabled' => $disability,
+            'p_email' => $patient_data['p_email'],
+            'p_phone_no' => $patient_data['p_phone_no'],
+            'p_address' => $patient_data['p_address'],
+            'p_blood_group' => $patient_data['p_blood_group'],
+        ];       
+        $this->view('doctor/generate_report', $data = [
+            'patient_data' => $data
+        ]);
+    }
+    public function add_report()
+    {
+        require_login();     
+        $user = get_user();
+        if ($user->role != 'doctor') {
+            redirect('login');
+        }
+        $patient_nid = $_GET['p_nid_no'];
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            $report_content = $_POST['report_content'];
+            $report = new Report();
+            $doctor = new Doctor();
+            $doctor_data = $doctor->first(['d_email' => $user->email]);
+            $report_data = [
+                'p_nid_no' => $patient_nid,
+                'd_reg_no' => $doctor_data['d_reg_no'],
+                'text' => $report_content,
+                'created_at' => date('Y-m-d H:i:s')
+            ];
+//            show($report_data);
+            $report->insert($report_data);
+            redirect('doctorPortal/manage_appointments');
+        }
     }
 }
