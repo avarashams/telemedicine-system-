@@ -3,7 +3,7 @@
 
         const formData = new FormData(this);
         // console.log(ROOT);
-        fetch(ROOT + "/admin/add_doctor", {
+        fetch(ROOT + "/adminPortal/add_doctor", {
             method: "POST",
             body: formData
         })
@@ -22,7 +22,7 @@
                 }
                 if (data.status === "success") {
                     // console.log(ROOT + "/admin/manage_doctors");
-                    window.location.href = ROOT + "/admin/manage_doctors";
+                    window.location.href = ROOT + "/adminPortal/manage_doctors";
                 }
 
             })

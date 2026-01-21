@@ -3,7 +3,7 @@ document.getElementById("d_Form").addEventListener("submit", function (e) {
 
     const formData = new FormData(this);
     // console.log(ROOT);
-    fetch(ROOT + "/adminPortal/update_doctor?d_reg_no=" + d_reg_no_existing, {
+    fetch(ROOT + "/DoctorPortal/profile" , {
         method: "POST",
         body: formData
     })
@@ -21,8 +21,8 @@ document.getElementById("d_Form").addEventListener("submit", function (e) {
                 }
             }
             if (data.status === "success") {
-                // console.log(ROOT + "/adminPortal/manage_doctors");
-                window.location.href = ROOT + "/adminPortal/manage_doctors";
+                // console.log(ROOT + "/admin/manage_doctors");
+                window.location.href = ROOT + "/DoctorProfile/dashboard";
             }
         })
         .catch(error => console.error('Error:', error));

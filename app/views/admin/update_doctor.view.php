@@ -11,13 +11,14 @@
     <div class="two-columns">
         <div class="menu" id="sidebar">
             <div class="top">
-                <a href="<?php echo ROOT ?>/admin" class="menu-btn">Dashboard</a>
-                <a href="<?php echo ROOT ?>/admin/manage_doctors" class="menu-btn active">Manage Doctors</a>
-                <a href="<?php echo ROOT ?>/admin/manage_patients" class="menu-btn">Manage Patients</a>
-                <a href="<?php echo ROOT ?>/admin/manage_appointments" class="menu-btn">Manage Appointments</a>
-                <a href="#" class="menu-btn">Announcements</a>
+                <a href="<?php echo ROOT ?>/adminPortal" class="menu-btn">Dashboard</a>
+                <a href="<?php echo ROOT ?>/adminPortal/manage_doctors" class="menu-btn active">Manage Doctors</a>
+                <a href="<?php echo ROOT ?>/adminPortal/manage_patients" class="menu-btn">Manage Patients</a>
+                <a href="<?php echo ROOT ?>/adminPortal/manage_appointments" class="menu-btn">Manage Appointments</a>
+                <a href="<?php echo ROOT?>/adminPortal/announcements" class="menu-btn">Announcements</a>
             </div>
             <div class="bottom">
+                <a href="<?php echo ROOT ?>/" class="menu-btn">Website</a>
                 <a href="#" class="menu-btn">Profile</a>
                 <a href="<?php echo ROOT ?>/logout" class="menu-btn">Log Out</a>
             </div>
@@ -25,7 +26,7 @@
         <div class="content">
             <div id="doctor-form" class="form-container">
                 <h2>Update Doctor</h2>
-                <form method="POST" action="<?php echo ROOT ?>/admin/update_doctor" id="d_Form">
+                <form method="POST" action="<?php echo ROOT ?>/adminPortal/update_doctor" id="d_Form">
                     <div class="form-group">
                         <label for="d_reg_no">Registration number (BMDC)
                             <input style="background: #D5D5D5;" type="text" name="d_reg_no" placeholder="16 digit number" value="<?php echo $data['d_reg_no'] ?? '';?>" readonly>
@@ -178,7 +179,7 @@
                     </div>
 
                     <button type="submit" class="confirm-button" id="submit-doctor">Confirm</button>
-                    <a href="<?php echo ROOT?>/admin/manage_doctors" class="back-btn">
+                    <a href="<?php echo ROOT?>/adminPortal/manage_doctors" class="back-btn">
                         <img src="<?php echo ROOT ?>/assets/images/logos/arrow-left.svg" alt="arrow-left" width="40"
                              height="40">
                     </a>
